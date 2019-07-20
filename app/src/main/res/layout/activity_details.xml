@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:fitsSystemWindows="true">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/details_loading_pb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_description_tv" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/details_poster_iv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_max="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/details_bach_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_back_white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/details_name_header_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/colorRed"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/details_poster_iv" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/details_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="@id/details_name_header_tv"
+            app:layout_constraintTop_toBottomOf="@+id/details_name_header_tv"
+            tools:text="aaa" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/details_description_header_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/description"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/colorRed"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/details_name_tv"
+            app:layout_constraintTop_toBottomOf="@+id/details_name_tv" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/details_description_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="@id/details_description_header_tv"
+            app:layout_constraintTop_toBottomOf="@+id/details_description_header_tv"
+            tools:text="aaa" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/details_comics_header_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/comics"
+            android:visibility="gone"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/colorRed"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/details_description_tv"
+            app:layout_constraintTop_toBottomOf="@+id/details_description_tv" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:visibility="gone"
+            android:id="@+id/details_comics_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="@id/details_comics_header_tv"
+            app:layout_constraintTop_toBottomOf="@+id/details_comics_header_tv" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/details_series_header_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:text="@string/series"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/colorRed"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/details_comics_rv"
+            app:layout_constraintTop_toBottomOf="@+id/details_comics_rv" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/details_series_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/details_series_header_tv"
+            app:layout_constraintTop_toBottomOf="@+id/details_series_header_tv" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/details_stories_header_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/stories"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/colorRed"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/details_series_rv"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/details_series_rv" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/details_stories_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/details_stories_header_tv"
+            app:layout_constraintTop_toBottomOf="@+id/details_stories_header_tv" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/details_events_header_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/events"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:visibility="gone"
+            android:textColor="@color/colorRed"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/details_stories_rv"
+            app:layout_constraintTop_toBottomOf="@+id/details_stories_rv" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/details_events_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/details_events_header_tv"
+            app:layout_constraintTop_toBottomOf="@+id/details_events_header_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>
