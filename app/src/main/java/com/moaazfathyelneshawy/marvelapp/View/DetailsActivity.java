@@ -160,8 +160,7 @@ public class DetailsActivity extends AppCompatActivity {
         RecycleClick.addTo(comicsRV).setOnItemClickListener(new RecycleClick.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int i, View view) {
-                String url = comics.get(i).getThumbnail().getPath() + "." + comics.get(i).getThumbnail().getExtension();
-                ImageSheet imageSheet = ImageSheet.getInstance(url, comics.get(i).getTitle());
+                ImageSheet imageSheet = ImageSheet.getInstance(comics);
                 imageSheet.show(getSupportFragmentManager(), "image_sheet");
             }
         });
@@ -177,8 +176,7 @@ public class DetailsActivity extends AppCompatActivity {
         RecycleClick.addTo(seriesRV).setOnItemClickListener(new RecycleClick.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int i, View view) {
-                String url = series.get(i).getThumbnail().getPath() + "." + series.get(i).getThumbnail().getExtension();
-                ImageSheet imageSheet = ImageSheet.getInstance(url, series.get(i).getTitle());
+                ImageSheet imageSheet = ImageSheet.getInstance(series);
                 imageSheet.show(getSupportFragmentManager(), "image_sheet");
             }
         });
@@ -194,8 +192,7 @@ public class DetailsActivity extends AppCompatActivity {
         RecycleClick.addTo(storiesRV).setOnItemClickListener(new RecycleClick.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int i, View view) {
-                String url = stories.get(i).getThumbnail().getPath() + "." + stories.get(i).getThumbnail().getExtension();
-                ImageSheet imageSheet = ImageSheet.getInstance(url, stories.get(i).getTitle());
+                ImageSheet imageSheet = ImageSheet.getInstance(stories);
                 imageSheet.show(getSupportFragmentManager(), "image_sheet");
             }
         });
@@ -211,8 +208,7 @@ public class DetailsActivity extends AppCompatActivity {
         RecycleClick.addTo(eventsRV).setOnItemClickListener(new RecycleClick.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int i, View view) {
-                String url = events.get(i).getThumbnail().getPath() + "." + events.get(i).getThumbnail().getExtension();
-                ImageSheet imageSheet = ImageSheet.getInstance(url, events.get(i).getTitle());
+                ImageSheet imageSheet = ImageSheet.getInstance(events);
                 imageSheet.show(getSupportFragmentManager(), "image_sheet");
             }
         });

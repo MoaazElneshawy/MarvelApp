@@ -7,34 +7,42 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.moaazfathyelneshawy.marvelapp.Adapters.ImagesAdapters;
+import com.moaazfathyelneshawy.marvelapp.Models.Item;
 import com.moaazfathyelneshawy.marvelapp.R;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class ImageSheet extends BottomSheetDialogFragment {
 
-    private String url;
-    private String title;
-    private BottomSheetBehavior mBehavior;
+    private List<Item> items;
 
-    private ImageSheet(String url, String title) {
-        this.url = url;
-        this.title = title;
+    private ImageSheet(List<Item> items) {
+        this.items = items;
     }
 
-    @BindView(R.id.sheet_poster)
-    AppCompatImageView posterIV;
-    @BindView(R.id.sheet_title)
-    AppCompatTextView titleTV;
+
+    @BindView(R.id.sheet_counter)
+    AppCompatTextView sheetCounterTV;
+
+    @BindView(R.id.sheet_rv)
+    RecyclerView sheetRV;
 
     @SuppressLint("NewApi")
     @Nullable
@@ -42,16 +50,31 @@ public class ImageSheet extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_bottom_sheet, container, false);
         ButterKnife.bind(this, view);
-        Picasso.get()
-                .load(url)
-                .placeholder(getActivity().getDrawable(R.drawable.placeholder))
-                .into(posterIV);
-        titleTV.setText(title);
+
+        sheetCounterTV.setText("" + 1 + " / " + items.size());
+
+        ImagesAdapters adapters = new ImagesAdapters(items);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
+        sheetRV.setLayoutManager(linearLayoutManager);
+        sheetRV.setAdapter(adapters);
+
+        sheetRV.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int pos = linearLayoutManager.findLastVisibleItemPosition();
+                sheetCounterTV.setText("" + (pos + 1) + " / " + items.size());
+            }
+        });
+
         return view;
     }
 
-    public static ImageSheet getInstance(String url, String title) {
-        return new ImageSheet(url, title);
+
+    public static ImageSheet getInstance(List<Item> items) {
+        return new ImageSheet(items);
     }
 
 
@@ -81,6 +104,5 @@ public class ImageSheet extends BottomSheetDialogFragment {
             });
         }
     }
-
 
 }
